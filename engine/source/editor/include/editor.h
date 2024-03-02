@@ -1,0 +1,6 @@
+namespace DXLearn
+{
+    class DXEditor 
+    {
+    };
+}
