@@ -1,8 +1,8 @@
 #pragma once
 
-namespace DXLearn
+namespace Piccolo
 {
-    class DXEngine
+    class PiccoloEngine
     {
     };
 }

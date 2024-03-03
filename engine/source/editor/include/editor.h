@@ -1,4 +1,4 @@
-namespace DXLearn
+namespace Piccolo
 {
     class DXEditor 
     {
