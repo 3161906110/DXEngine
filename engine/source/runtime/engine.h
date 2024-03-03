@@ -1,8 +1,8 @@
 #pragma once
 
-namespace Piccolo
+namespace MGame
 {
-    class PiccoloEngine
+    class MGameEngine
     {
     };
 }

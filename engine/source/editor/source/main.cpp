@@ -5,9 +5,9 @@
 
 int main(int argc, char** argv)
 {
-    Piccolo::WindowCreateInfo window_create_info;
-    Piccolo::WindowSystem().initialize(window_create_info);
-    while (1)
+    MGame::WindowCreateInfo window_create_info;
+    MGame::WindowSystem().initialize(window_create_info);
+    while (true)
     {
 
     }

@@ -1,5 +1,5 @@
 
-set(TARGET_NAME PiccoloRuntime)
+set(TARGET_NAME MGameRuntime)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

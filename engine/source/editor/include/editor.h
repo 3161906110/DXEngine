@@ -1,4 +1,4 @@
-namespace Piccolo
+namespace MGame
 {
     class DXEditor 
     {
