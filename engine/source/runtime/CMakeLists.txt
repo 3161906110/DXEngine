@@ -32,3 +32,16 @@ target_include_directories(
   PUBLIC $<BUILD_INTERFACE:${ENGINE_ROOT_DIR}/source/runtime>
   $<INSTALL_INTERFACE:include/${TARGET_NAME}-${PROJECT_VERSION}>
 )
+
+
+
+# ---- Create an installable target ----
+# this allows users to install and find the library via `find_package()`.
+
+# the location where the project's version header will be placed should match the project's regular
+# header paths
+string(TOLOWER ${TARGET_NAME}/version.h VERSION_HEADER_LOCATION)
+
+### precompile
+# set global vari used by precompile
+set(MGAME_RUNTIME_HEADS "${HEADER_FILES}" PARENT_SCOPE)
