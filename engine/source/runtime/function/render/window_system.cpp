@@ -1,7 +1,28 @@
 #include "runtime/function/render/window_system.h"
+#include <backends/imgui_impl_win32.h>
+
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 namespace MGame
 {
+
+	LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+	{
+		switch (msg)
+		{
+		case WM_CLOSE:
+			PostQuitMessage(69);
+			break;
+		}
+
+		if (ImGui_ImplWin32_WndProcHandler(hwnd, msg, wParam, lParam))
+		{
+			return true;
+		}
+
+		return DefWindowProc(hwnd, msg, wParam, lParam);
+	}
 
 	WindowSystem::~WindowSystem()
 	{
@@ -19,7 +40,7 @@ namespace MGame
 		WNDCLASSEX wc = { 0 };
 		wc.cbSize = sizeof(wc);
 		wc.style = CS_OWNDC;
-		wc.lpfnWndProc = DefWindowProc;
+		wc.lpfnWndProc = WndProc;
 		wc.cbClsExtra = 0;
 		wc.cbWndExtra = 0;
 		wc.hInstance = GetModuleHandle(nullptr);
