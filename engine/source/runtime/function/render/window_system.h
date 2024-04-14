@@ -1,4 +1,5 @@
 #pragma once
+
 #include<Windows.h>
 #include<array>
 
@@ -17,11 +18,13 @@ namespace MGame
      public:
         WindowSystem() = default;
         ~WindowSystem();
-        void               initialize(WindowCreateInfo create_info);
-        void               setTitle(const char* title);
-        void               pollEvents() const;
-        HWND               getWindow() const;
-        std::array<int, 2> getWindowSize() const;
+        void               Initialize(WindowCreateInfo create_info);
+        void               SetTitle(const char* title);
+        void               PollEvents();
+        HWND               GetWindow() const { return m_window; };
+
+        bool              ShouldClose() const;
+        std::array<int, 2> GetWindowSize() const;
 
      private:
          HWND m_window {nullptr};
@@ -29,6 +32,7 @@ namespace MGame
          int         m_height {0};
 
          bool m_is_focus_mode {false};
+         bool b_is_close      {false};
 
      };
 } // namespace MGame

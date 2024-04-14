@@ -1,5 +1,7 @@
 
 set(ENGINE_ROOT_DIR "${MGAME_ROOT_DIR}/engine")
+set(THIRD_PARTY_DIR "${ENGINE_ROOT_DIR}/3rdparty")
+
 
 set(DEPLOY_CONFIG_DIR "configs/deployment")
 set(DEVELOP_CONFIG_DIR "configs/development")
@@ -10,6 +12,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT MGameEditor)
 endif()
 
+add_subdirectory(3rdparty)
 
 add_subdirectory(source/runtime)
 add_subdirectory(source/editor)

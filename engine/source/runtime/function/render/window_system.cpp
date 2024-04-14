@@ -5,11 +5,11 @@ namespace MGame
 
 	WindowSystem::~WindowSystem()
 	{
-		// TODO �ͷŴ���
+		// TODO 释放窗口
 		m_window = nullptr;
 	}
 
-	void WindowSystem::initialize(WindowCreateInfo create_info)
+	void WindowSystem::Initialize(WindowCreateInfo create_info)
 	{
 		m_width = create_info.width;
 		m_height = create_info.height;
@@ -43,4 +43,37 @@ namespace MGame
 		// show window
 		ShowWindow(m_window, SW_SHOW);
 	}
+
+	void WindowSystem::SetTitle(const char* title)
+	{
+
+	}
+
+	void WindowSystem::PollEvents()
+	{
+		MSG msg;
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+			{
+				b_is_close = true;
+			}
+			else
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+	}
+
+	bool WindowSystem::ShouldClose() const
+	{
+		return b_is_close;
+	}
+
+	std::array<int, 2> WindowSystem::GetWindowSize() const
+	{
+		return { m_width, m_height };
+	}
+
 }
